@@ -1,0 +1,183 @@
+/* ============================================================
+   SONN LAW GROUP — Color & Type Foundations
+   ------------------------------------------------------------
+   Adapted from the "Vort" private-markets template language:
+   deep brand color, pale tinted sections, large rounded cards,
+   two-tone title-case headings, thin line icons.
+   The template's teal-green has been re-keyed to Sonn Law
+   Group's royal-blue brand color (sampled from the firm logo).
+   ============================================================ */
+
+/* ---- Fonts (Google Fonts substitute for template's General-Sans-like grotesk) ---- */
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap');
+
+:root {
+  /* ===========================================================
+     RAW PALETTE — Blue scale (re-key of template teal-green)
+     =========================================================== */
+
+  /* Brand navy — sampled from Sonn Law Group serif logo rgb(21,42,71) */
+  --blue-950: #0c1a2b;   /* deepest ink — hero overlays                       */
+  --blue-900: #152a47;   /* logo-exact navy — dark sections, footer            */
+  --blue-800: #1a3557;   /* gradient anchor                                   */
+  --blue-700: #1e3f6e;   /* PRIMARY brand — CTA buttons, links                */
+  --blue-600: #24548f;   /* hover state                                       */
+  --blue-500: #3e6ba8;   /* mid — secondary surfaces                          */
+  --blue-400: #7097c8;   /* accent — two-tone heading 2nd line, charts        */
+  --blue-300: #a0bce0;   /* light accent                                      */
+  --blue-200: #c8d9f0;   /* soft fill                                         */
+  --blue-100: #e6eef8;   /* tinted section background                         */
+  --blue-50:  #f3f6fc;   /* faintest tint                                     */
+
+  /* Neutrals — cool grey, very slightly blue */
+  --ink-900:  #14222f;   /* primary text                                      */
+  --ink-700:  #2b3a48;   /* strong text on light                              */
+  --ink-500:  #5b6b7a;   /* secondary / muted text                            */
+  --ink-400:  #8593a1;   /* tertiary, captions, meta                          */
+  --ink-300:  #b9c4cd;   /* disabled, hairlines on tint                       */
+  --line:     #dceaf4;   /* default hairline / page frame border (pale blue)  */
+  --line-soft:#e9f1f7;   /* subtle divider                                    */
+  --paper:    #ffffff;   /* card / surface                                    */
+  --paper-2:  #eef3f7;   /* light grey-blue panel (template's grey sections)  */
+  --bg:       #ffffff;   /* page background (sits inside pale frame)           */
+  --frame:    #d8e3ef;   /* outer pale-blue page frame                        */
+
+  /* Semantic status (rare in brand, used for client portal/forms) */
+  --success:  #1f8a5b;
+  --warning:  #c98a16;
+  --danger:   #c0392b;
+
+  /* ===========================================================
+     SEMANTIC COLOR TOKENS
+     =========================================================== */
+  --color-bg:            var(--bg);
+  --color-surface:       var(--paper);
+  --color-surface-tint:  var(--blue-100);
+  --color-surface-grey:  var(--paper-2);
+  --color-surface-dark:  var(--blue-900);
+
+  --color-fg:            var(--ink-900);   /* fg1 — primary text              */
+  --color-fg-2:          var(--ink-500);   /* fg2 — secondary text            */
+  --color-fg-3:          var(--ink-400);   /* fg3 — meta / captions           */
+  --color-fg-invert:     #ffffff;          /* text on dark/brand              */
+  --color-fg-invert-2:   rgba(255,255,255,.72);
+
+  --color-brand:         var(--blue-700);  /* primary brand / CTA fill        */
+  --color-brand-hover:   var(--blue-600);
+  --color-accent:        var(--blue-400);  /* two-tone heading / highlights   */
+  --color-link:          var(--blue-700);
+
+  --color-border:        var(--line);
+  --color-border-soft:   var(--line-soft);
+
+  /* ===========================================================
+     TYPE — families & scale
+     =========================================================== */
+  --font-display: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body:    'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-serif:   'Fraunces', Georgia, 'Times New Roman', serif; /* rare editorial accent */
+  --font-mono:    ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Fluid display sizes — elegant, airy, lighter weight */
+  --fs-display:   clamp(2.2rem, 1.2rem + 3.4vw, 3.75rem); /* hero h1         */
+  --fs-h1:        clamp(1.9rem, 1.2rem + 2.2vw, 2.9rem);
+  --fs-h2:        clamp(1.55rem, 1.15rem + 1.5vw, 2.2rem);
+  --fs-h3:        clamp(1.15rem, 1rem + .6vw, 1.45rem);
+  --fs-h4:        1.05rem;
+  --fs-body-lg:   1.0625rem;
+  --fs-body:      0.9375rem;
+  --fs-sm:        0.875rem;
+  --fs-xs:        0.78125rem;
+  --fs-eyebrow:   0.6875rem;  /* uppercase label, tracked                     */
+
+  --lh-tight:     1.05;
+  --lh-snug:      1.18;
+  --lh-normal:    1.6;
+
+  --tracking-tight:   -0.03em;
+  --tracking-normal:  0;
+  --tracking-eyebrow: 0.16em;
+
+  /* ===========================================================
+     SPACING — 4px base scale
+     =========================================================== */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-5: 20px;  --space-6: 24px;  --space-8: 32px;  --space-10: 40px;
+  --space-12: 48px; --space-16: 64px; --space-20: 80px; --space-24: 96px;
+  --space-32: 128px;
+
+  /* ===========================================================
+     RADII — template uses very rounded cards & full pills
+     =========================================================== */
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   22px;    /* standard card                                    */
+  --radius-xl:   28px;    /* large feature card                               */
+  --radius-2xl:  36px;    /* hero / section container                         */
+  --radius-pill: 999px;
+
+  /* ===========================================================
+     ELEVATION — soft, low-contrast cool shadows
+     =========================================================== */
+  --shadow-xs:  0 1px 2px rgba(16, 42, 67, 0.05);
+  --shadow-sm:  0 2px 8px rgba(16, 42, 67, 0.06);
+  --shadow-md:  0 10px 30px rgba(16, 42, 67, 0.08);
+  --shadow-lg:  0 24px 60px rgba(16, 42, 67, 0.12);
+  --shadow-glass: 0 8px 32px rgba(7, 34, 61, 0.28); /* on dark/glass stat card */
+
+  /* Inset hairline used on tinted cards */
+  --ring-inset: inset 0 0 0 1px var(--line);
+
+  /* ===========================================================
+     MOTION
+     =========================================================== */
+  --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out:cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast:   140ms;
+  --dur-base:   240ms;
+  --dur-slow:   520ms;
+}
+
+/* ============================================================
+   SEMANTIC ELEMENT STYLES (opt-in via .ds-prose or utility use)
+   ============================================================ */
+.ds-eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-brand);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.ds-eyebrow::before { /* small bullet, as in template "• Why Partner with Us" */
+  content: "";
+  width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor;
+}
+
+.ds-display {
+  font-family: var(--font-display);
+  font-size: var(--fs-display);
+  font-weight: 600;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-fg);
+}
+.ds-display .accent { color: var(--color-accent); }
+
+h1, .ds-h1 { font-family: var(--font-display); font-size: var(--fs-h1); font-weight: 400; line-height: var(--lh-snug); letter-spacing: var(--tracking-tight); color: var(--color-fg); }
+h2, .ds-h2 { font-family: var(--font-display); font-size: var(--fs-h2); font-weight: 400; line-height: var(--lh-snug); letter-spacing: var(--tracking-tight); color: var(--color-fg); }
+h3, .ds-h3 { font-family: var(--font-display); font-size: var(--fs-h3); font-weight: 500; line-height: var(--lh-snug); color: var(--color-fg); }
+h4, .ds-h4 { font-family: var(--font-display); font-size: var(--fs-h4); font-weight: 500; line-height: var(--lh-snug); color: var(--color-fg); }
+
+p, .ds-p { font-family: var(--font-body); font-size: var(--fs-body); font-weight: 400; line-height: var(--lh-normal); color: var(--color-fg-2); }
+.ds-lead { font-size: var(--fs-body-lg); line-height: 1.5; color: var(--color-fg-2); }
+.ds-meta { font-size: var(--fs-xs); color: var(--color-fg-3); letter-spacing: .01em; }
+
+a, .ds-link { color: var(--color-link); text-decoration: none; }
+a:hover { color: var(--color-brand-hover); }
+
+code, .ds-code { font-family: var(--font-mono); font-size: 0.875em; background: var(--paper-2); padding: .12em .4em; border-radius: var(--radius-sm); color: var(--ink-700); }
