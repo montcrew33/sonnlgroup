@@ -232,7 +232,7 @@ function Insights({ onOpen }) {
       <div className="container">
         <div className="ins-head reveal">
           <h2 className="h-sec">Investor Alerts &amp; <span className="accent">Insights</span></h2>
-          <Button variant="ghost" icon="arrow-right">View All</Button>
+          <Button variant="ghost" icon="arrow-right" href="blog.html">View All</Button>
         </div>
         <div className="ins-grid reveal">
           {posts.map((p) => (

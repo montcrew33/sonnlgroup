@@ -35,7 +35,12 @@ function useReveal() {
 
 /* ---------- NAV ---------- */
 function Nav({ onContact }) {
-  const links = ["Home", "About", "Practice Areas", "Insights"];
+  const links = [
+    { label: "Home", href: "#top" },
+    { label: "About", href: "#top" },
+    { label: "Practice Areas", href: "#top" },
+    { label: "Insights", href: "blog.html" },
+  ];
   const [active, setActive] = useState("Home");
   return (
     <nav className="nav">
@@ -44,7 +49,7 @@ function Nav({ onContact }) {
       </a>
       <div className="nav-pill">
         {links.map((l) => (
-          <a key={l} className={active === l ? "active" : ""} onClick={() => setActive(l)}>{l}</a>
+          <a key={l.label} href={l.href} className={active === l.label ? "active" : ""} onClick={() => setActive(l.label)}>{l.label}</a>
         ))}
       </div>
       <div className="nav-cta">
