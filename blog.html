@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Investor Alerts & Legal Insights — Sonn Law Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #152a47; --brand: #1e3f6e; --brand-h: #24548f;
+  --accent: #7097c8; --ink: #14222f; --ink2: #5b6b7a; --ink3: #8593a1;
+  --line: #d8e3ef; --tint: #f3f6fc; --tint2: #e6eef8; --paper: #fff;
+  --frame: #edf1f7;
+  --r-pill: 999px; --r-md: 16px; --r-lg: 22px; --r-xl: 28px;
+  --shadow: 0 4px 24px rgba(21,42,71,.08);
+  --shadow-md: 0 8px 40px rgba(21,42,71,.12);
+  --font: 'Hanken Grotesk', system-ui, sans-serif;
+}
+html { background: var(--frame); -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); color: var(--ink); }
+a { text-decoration: none; color: inherit; }
+img { display: block; }
+
+/* ---- NAV ---- */
+.nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.96); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-brand img { height: 28px; width: auto; }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a { font-size: 13.5px; font-weight: 500; color: var(--ink3); letter-spacing: .01em; transition: color .18s; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); }
+.btn { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font); font-weight: 500; font-size: 13px; letter-spacing: .03em; border: 0; cursor: pointer; border-radius: var(--r-pill); padding: 9px 20px; transition: all .2s; white-space: nowrap; }
+.btn-primary { background: var(--brand); color: #fff; }
+.btn-primary:hover { background: var(--brand-h); }
+.btn-ghost { background: none; border: 1.5px solid var(--line); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--brand); color: var(--brand); }
+@media (max-width: 768px) { .nav-links { display: none; } }
+
+/* ---- PAGE HEADER ---- */
+.page-header { background: linear-gradient(135deg, var(--navy) 0%, var(--brand) 60%, #3e6ba8 100%); padding: 64px 40px 56px; position: relative; overflow: hidden; }
+.page-header::before { content: ''; position: absolute; inset: 0; background: url('https://i.imgur.com/uVN0MfJ.jpg') center/cover; opacity: .08; }
+.page-header-inner { position: relative; max-width: 1100px; margin: 0 auto; display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.page-header h1 { font-size: clamp(2rem, 1.2rem + 2vw, 2.8rem); font-weight: 300; color: #fff; letter-spacing: -.03em; line-height: 1.1; }
+.page-header h1 span { color: var(--accent); }
+.page-header p { color: rgba(255,255,255,.72); font-size: 15px; line-height: 1.6; margin-top: 12px; max-width: 480px; }
+.header-stat { display: flex; gap: 32px; }
+.hstat { text-align: right; }
+.hstat .num { font-size: 2rem; font-weight: 300; color: #fff; letter-spacing: -.03em; }
+.hstat .cap { font-size: 12px; color: rgba(255,255,255,.6); margin-top: 3px; letter-spacing: .04em; text-transform: uppercase; }
+
+/* ---- MAIN LAYOUT ---- */
+.page-body { max-width: 1100px; margin: 0 auto; padding: 48px 40px 80px; display: grid; grid-template-columns: 1fr 320px; gap: 40px; align-items: start; }
+@media (max-width: 900px) { .page-body { grid-template-columns: 1fr; } .sidebar { display: none; } }
+
+/* ---- FILTERS ---- */
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 32px; }
+.filt { background: #fff; border: 1.5px solid var(--line); border-radius: var(--r-pill); padding: 7px 18px; font-size: 13px; font-weight: 500; color: var(--ink3); cursor: pointer; font-family: var(--font); transition: all .18s; }
+.filt:hover { border-color: var(--brand); color: var(--brand); }
+.filt.active { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+/* ---- FEATURED POST ---- */
+.featured { background: #fff; border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow-md); margin-bottom: 28px; display: grid; grid-template-columns: 1fr 1fr; }
+.featured-img { position: relative; min-height: 340px; overflow: hidden; }
+.featured-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.featured-img .feat-badge { position: absolute; top: 18px; left: 18px; background: #e74c3c; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; border-radius: var(--r-pill); padding: 5px 12px; }
+.featured-body { padding: 36px 36px 32px; display: flex; flex-direction: column; justify-content: space-between; }
+.feat-cat { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--brand); margin-bottom: 14px; }
+.featured-body h2 { font-size: 1.4rem; font-weight: 400; color: var(--ink); line-height: 1.25; letter-spacing: -.015em; margin-bottom: 14px; }
+.featured-body p { font-size: 14px; color: var(--ink2); line-height: 1.65; flex: 1; }
+.feat-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+.feat-author { display: flex; align-items: center; gap: 10px; }
+.feat-author img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.feat-author .name { font-size: 13px; font-weight: 600; color: var(--ink); }
+.feat-author .date { font-size: 12px; color: var(--ink3); }
+.read-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--brand); }
+.read-btn svg { width: 14px; height: 14px; transition: transform .18s; }
+.read-btn:hover svg { transform: translateX(3px); }
+@media (max-width: 700px) { .featured { grid-template-columns: 1fr; } .featured-img { min-height: 220px; } }
+
+/* ---- POST GRID ---- */
+.posts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+@media (max-width: 600px) { .posts-grid { grid-template-columns: 1fr; } }
+.post-card { background: #fff; border-radius: var(--r-xl); overflow: hidden; box-shadow: var(--shadow); transition: all .22s; cursor: pointer; display: flex; flex-direction: column; }
+.post-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.post-card:hover .read-btn svg { transform: translateX(3px); }
+.post-img { position: relative; height: 180px; overflow: hidden; background: var(--tint2); }
+.post-img img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; transition: transform .4s; }
+.post-card:hover .post-img img { transform: scale(1.04); }
+.post-cat-pill { position: absolute; top: 14px; left: 14px; background: rgba(21,42,71,.75); backdrop-filter: blur(8px); color: #fff; font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border-radius: var(--r-pill); padding: 4px 11px; }
+.post-body { padding: 22px 22px 20px; display: flex; flex-direction: column; flex: 1; }
+.post-body h3 { font-size: 15.5px; font-weight: 400; color: var(--ink); line-height: 1.35; letter-spacing: -.01em; margin-bottom: 10px; flex: 1; }
+.post-body p { font-size: 13px; color: var(--ink3); line-height: 1.6; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.post-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
+.post-date { font-size: 12px; color: var(--ink3); }
+.post-footer .read-btn { font-size: 12.5px; }
+
+/* ---- SIDEBAR ---- */
+.sidebar { display: flex; flex-direction: column; gap: 20px; position: sticky; top: 84px; }
+.sid-card { background: #fff; border-radius: var(--r-xl); box-shadow: var(--shadow); padding: 28px; }
+.sid-card h4 { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brand); margin-bottom: 16px; }
+.sid-card p { font-size: 14px; color: var(--ink2); line-height: 1.6; margin-bottom: 18px; }
+.sid-card .btn { width: 100%; justify-content: center; }
+.sid-dark { background: linear-gradient(135deg, var(--navy), var(--brand)); }
+.sid-dark h4 { color: rgba(255,255,255,.65); }
+.sid-dark p { color: rgba(255,255,255,.8); }
+.sid-dark .btn-primary { background: #fff; color: var(--brand); }
+.sid-dark .btn-primary:hover { background: var(--tint); }
+.sid-phone { font-size: 1.4rem; font-weight: 300; color: #fff; letter-spacing: -.02em; margin-bottom: 6px; }
+.sid-sub { font-size: 12px; color: rgba(255,255,255,.55); margin-bottom: 20px; }
+.alert-list { display: flex; flex-direction: column; gap: 12px; }
+.alert-item { display: flex; gap: 12px; align-items: flex-start; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.alert-item:last-child { border: 0; padding: 0; }
+.alert-dot { width: 8px; height: 8px; border-radius: 50%; background: #e74c3c; flex: 0 0 auto; margin-top: 5px; }
+.alert-item p { font-size: 13px; color: var(--ink); line-height: 1.4; font-weight: 500; }
+.alert-item span { font-size: 11.5px; color: var(--ink3); }
+
+/* ---- FOOTER ---- */
+.blog-footer { background: var(--navy); padding: 40px; text-align: center; }
+.blog-footer img { height: 32px; margin: 0 auto 16px; opacity: .85; }
+.blog-footer p { font-size: 12.5px; color: rgba(255,255,255,.45); line-height: 1.6; max-width: 560px; margin: 0 auto; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-brand"><img src="./assets/sonn-law-logo.png" alt="Sonn Law Group" /></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html">About</a>
+    <a href="index.html">Practice Areas</a>
+    <a href="blog.html" class="active">Insights</a>
+  </div>
+  <a href="contact.html" class="btn btn-primary">Get In Touch</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <div>
+      <h1>Investor Alerts<br />&amp; <span>Legal Insights</span></h1>
+      <p>Breaking news, FINRA enforcement actions, and guidance for investors who may have been harmed by broker misconduct, Ponzi schemes, or securities fraud.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="page-body">
+  <main>
+    <!-- Filters -->
+    <div class="filters">
+      <button class="filt active" onclick="filterPosts('all', this)">All Posts</button>
+      <button class="filt" onclick="filterPosts('broker', this)">Broker Investigations</button>
+      <button class="filt" onclick="filterPosts('ponzi', this)">Ponzi Schemes</button>
+      <button class="filt" onclick="filterPosts('alternative', this)">Alternative Investments</button>
+      <button class="filt" onclick="filterPosts('class', this)">Class Actions</button>
+    </div>
+
+    <!-- Featured Post -->
+    <div class="featured" data-cat="ponzi broker">
+      <div class="featured-img">
+        <img src="https://i.imgur.com/dBqPzg7.jpg" alt="Goliath Ventures Ponzi Scheme" />
+        <span class="feat-badge">⚡ Breaking</span>
+      </div>
+      <div class="featured-body">
+        <div class="feat-cat">Broker / Advisor Investigations · Investment Loss Recovery</div>
+        <h2>Federal Prosecutors Seek to Seize Luxury Homes and Vehicles in Goliath Ventures Ponzi Scheme Case</h2>
+        <p>Federal prosecutors are seeking to seize seven properties and eleven vehicles allegedly purchased with proceeds from the Goliath Ventures scheme. The latest DOJ filing alleges at least $400 million was obtained from more than 1,000 investors and highlights the importance of asset tracing, forfeiture, and civil recovery litigation.</p>
+        <div class="feat-meta">
+          <div class="feat-author">
+            <img src="https://i.imgur.com/POqP23a.jpg" alt="Jeffrey Sonn" />
+            <div>
+              <div class="name">Jeffrey Sonn</div>
+              <div class="date">May 25, 2026</div>
+            </div>
+          </div>
+          <a class="read-btn" href="https://sonnlaw.com/federal-prosecutors-seek-to-seize-luxury-homes-and-vehicles-in-goliath-ventures-ponzi-scheme-case/" target="_blank">
+            Read Full Article
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Posts grid -->
+    <div class="posts-grid" id="posts-grid">
+
+      <article class="post-card" data-cat="broker ponzi" onclick="window.open('https://sonnlaw.com/edwin-emmett-lickiss-jr-ponzi-scheme-guilty-plea/','_blank')">
+        <div class="post-img">
+          <img src="https://i.imgur.com/uVN0MfJ.jpg" alt="Edwin Lickiss Ponzi Scheme" />
+          <span class="post-cat-pill">Broker Investigations</span>
+        </div>
+        <div class="post-body">
+          <h3>Former Financial Advisor Edwin Emmett Lickiss Jr. Pleads Guilty in $9.5 Million Ponzi Scheme</h3>
+          <p>Former advisor Edwin Emmett Lickiss Jr. pleaded guilty in a $9.5M Ponzi scheme involving fake bond investments and more than 93 investors.</p>
+          <div class="post-footer">
+            <span class="post-date">May 21, 2026</span>
+            <span class="read-btn">Read More <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5-7.5M21 12H3"/></svg></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card" data-cat="alternative" onclick="window.open('https://sonnlaw.com/wildermuth-fund-investor-losses-financial-advisor-claims/','_blank')">
+        <div class="post-img">
+          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80" alt="Wildermuth Fund" />
+          <span class="post-cat-pill">Alternative Investment Losses</span>
+        </div>
+        <div class="post-body">
+          <h3>Wildermuth Fund Investors May Have Separate Claims Against Their Financial Advisors</h3>
+          <p>Investors who suffered losses in the Wildermuth Fund (WESFX, WEFCX, WEIFX) may have FINRA arbitration claims against the advisors who recommended it.</p>
+          <div class="post-footer">
+            <span class="post-date">May 20, 2026</span>
+            <span class="read-btn">Read More <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5-7.5M21 12H3"/></svg></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card" data-cat="class broker" onclick="window.open('https://sonnlaw.com/','_blank')">
+        <div class="post-img">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="Goldman Sachs 1MDB" />
+          <span class="post-cat-pill">Class Actions</span>
+        </div>
+        <div class="post-body">
+          <h3>Goldman Sachs Faces $500M Shareholder Lawsuit Over 1MDB Scandal Disclosures</h3>
+          <p>Shareholders allege Goldman Sachs misled investors about its exposure to the 1MDB fraud — a case with significant implications for institutional accountability.</p>
+          <div class="post-footer">
+            <span class="post-date">May 18, 2026</span>
+            <span class="read-btn">Read More <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5-7.5M21 12H3"/></svg></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card" data-cat="ponzi broker" onclick="window.open('https://sonnlaw.com/','_blank')">
+        <div class="post-img">
+          <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=600&q=80" alt="Greg Lindberg Insurance Fraud" />
+          <span class="post-cat-pill">Investment Loss Recovery</span>
+        </div>
+        <div class="post-body">
+          <h3>Greg Lindberg Sentenced to 12 Years in $2 Billion Insurance Fraud Scheme</h3>
+          <p>Lindberg's conviction underscores the scale of harm to policyholders and investors — and the potential for civil recovery actions independent of criminal proceedings.</p>
+          <div class="post-footer">
+            <span class="post-date">May 15, 2026</span>
+            <span class="read-btn">Read More <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5-7.5M21 12H3"/></svg></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card" data-cat="broker" onclick="window.open('https://sonnlaw.com/','_blank')">
+        <div class="post-img">
+          <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80" alt="FINRA Structured Notes" />
+          <span class="post-cat-pill">Market Watch</span>
+        </div>
+        <div class="post-body">
+          <h3>Market Watch: FINRA and DOJ Signal Heightened Scrutiny of Structured Notes and Ponzi Risks</h3>
+          <p>Regulators are focusing on complex structured products sold to retail investors — what this means for your portfolio and your recovery options.</p>
+          <div class="post-footer">
+            <span class="post-date">May 10, 2026</span>
+            <span class="read-btn">Read More <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5-7.5M21 12H3"/></svg></span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card" data-cat="alternative" onclick="window.open('https://sonnlaw.com/','_blank')">
+        <div class="post-img">
+          <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?auto=format&fit=crop&w=600&q=80" alt="Non-traded REIT losses" />
+          <span class="post-cat-pill">Alternative Investments</span>
+        </div>
+        <div class="post-body">
+          <h3>Non-Traded REITs and Interval Funds: When Your Advisor Didn't Tell You the Whole Story</h3>
+          <p>Advisors who recommended illiquid non-traded REITs without disclosing the risks may be liable under FINRA suitability rules — even after the investment declines.</p>
+          <div class="post-footer">
+            <span class="post-date">May 5, 2026</span>
+            <span class="read-btn">Read More <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5-7.5M21 12H3"/></svg></span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+
+    <div class="sid-card sid-dark">
+      <h4>Free Case Review</h4>
+      <div class="sid-phone">1-844-689-5754</div>
+      <div class="sid-sub">Available nationwide · Mon–Fri 9am–6pm ET</div>
+      <p>Think you may have a claim? Our attorneys review investor cases at no cost and no obligation.</p>
+      <a href="contact.html" class="btn btn-primary">Request Free Review</a>
+    </div>
+
+    <div class="sid-card">
+      <h4>Active Investor Alerts</h4>
+      <div class="alert-list">
+        <div class="alert-item">
+          <div class="alert-dot"></div>
+          <div>
+            <p>Goliath Ventures — $400M Ponzi</p>
+            <span>DOJ asset forfeiture proceeding</span>
+          </div>
+        </div>
+        <div class="alert-item">
+          <div class="alert-dot"></div>
+          <div>
+            <p>Wildermuth Fund (WESFX/WEFCX)</p>
+            <span>FINRA arbitration claims open</span>
+          </div>
+        </div>
+        <div class="alert-item">
+          <div class="alert-dot"></div>
+          <div>
+            <p>Lickiss $9.5M Ponzi — 93+ victims</p>
+            <span>Civil recovery review underway</span>
+          </div>
+        </div>
+        <div class="alert-item">
+          <div class="alert-dot"></div>
+          <div>
+            <p>Structured Notes — FINRA sweep</p>
+            <span>Suitability claims being reviewed</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sid-card">
+      <h4>About the Author</h4>
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:14px">
+        <img src="https://i.imgur.com/POqP23a.jpg" alt="Jeffrey Sonn" style="width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:top" />
+        <div>
+          <div style="font-size:14px;font-weight:600;color:var(--ink)">Jeffrey R. Sonn, Esq.</div>
+          <div style="font-size:12px;color:var(--ink3)">Founder, Sonn Law Group</div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--ink2);line-height:1.6">Securities fraud attorney with 30+ years recovering investor losses through FINRA arbitration, class actions, and federal litigation.</p>
+    </div>
+
+  </aside>
+</div>
+
+<!-- FOOTER -->
+<footer class="blog-footer">
+  <img src="./assets/sonn-law-logo-white.png" alt="Sonn Law Group" />
+  <p>© 2026 Sonn Law Group, P.A. · 19495 Biscayne Blvd, Suite 607, Aventura, FL 33180 · 1-844-689-5754<br>
+  The information on this site is for general informational purposes only and does not constitute legal advice or create an attorney-client relationship.</p>
+</footer>
+
+<script>
+function filterPosts(cat, btn) {
+  document.querySelectorAll('.filt').forEach(f => f.classList.remove('active'));
+  btn.classList.add('active');
+  const cards = document.querySelectorAll('.post-card, .featured');
+  cards.forEach(c => {
+    const cats = c.dataset.cat || '';
+    c.style.display = (cat === 'all' || cats.includes(cat)) ? '' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>

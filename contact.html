@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Free Case Review — Sonn Law Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --navy: #152a47; --brand: #1e3f6e; --brand-h: #24548f;
+  --accent: #7097c8; --ink: #14222f; --ink2: #5b6b7a; --ink3: #8593a1;
+  --line: #d8e3ef; --tint: #f3f6fc; --tint2: #e6eef8; --paper: #fff;
+  --frame: #d8e3ef; --r-pill: 999px; --r-lg: 22px; --r-xl: 28px;
+  --shadow: 0 10px 40px rgba(21,42,71,.10);
+  --font: 'Hanken Grotesk', system-ui, sans-serif;
+}
+html, body { min-height: 100vh; font-family: var(--font); background: var(--frame); -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+
+/* ---- Layout ---- */
+.shell { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+.left { background: linear-gradient(160deg, var(--navy), var(--brand) 65%, #3e6ba8); display: flex; flex-direction: column; justify-content: space-between; padding: 48px 56px; position: relative; overflow: hidden; }
+.left::before { content: ''; position: absolute; inset: 0; background: url('https://i.imgur.com/uVN0MfJ.jpg') center/cover; opacity: .12; }
+.left-inner { position: relative; z-index: 1; }
+.logo { display: block; height: 40px; width: auto; margin-bottom: 64px; }
+.left h1 { font-size: 2.4rem; font-weight: 300; color: #fff; line-height: 1.1; letter-spacing: -.03em; margin-bottom: 20px; }
+.left h1 span { color: var(--accent); }
+.left p { font-size: 15px; color: rgba(255,255,255,.75); line-height: 1.65; max-width: 380px; }
+.trust-list { margin-top: 48px; display: flex; flex-direction: column; gap: 16px; }
+.trust-item { display: flex; align-items: center; gap: 14px; }
+.trust-icon { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,.12); display: flex; align-items: center; justify-content: center; flex: 0 0 auto; color: var(--accent); }
+.trust-icon svg { width: 16px; height: 16px; }
+.trust-text { font-size: 13.5px; color: rgba(255,255,255,.82); font-weight: 500; }
+.contact-info { position: relative; z-index: 1; margin-top: 48px; }
+.contact-info a { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.72); font-size: 14px; margin-bottom: 8px; }
+.contact-info svg { width: 15px; height: 15px; }
+
+/* ---- Right panel ---- */
+.right { background: var(--paper); display: flex; align-items: flex-start; justify-content: center; padding: 60px 48px; overflow-y: auto; }
+.form-wrap { width: 100%; max-width: 480px; }
+
+/* ---- Progress ---- */
+.progress-row { display: flex; align-items: center; gap: 10px; margin-bottom: 40px; }
+.step-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line); transition: all .3s; }
+.step-dot.done { background: var(--brand); }
+.step-dot.active { width: 24px; border-radius: 4px; background: var(--brand); }
+.step-label { font-size: 12px; color: var(--ink3); letter-spacing: .06em; text-transform: uppercase; margin-left: 6px; }
+
+/* ---- Step content ---- */
+.step { display: none; }
+.step.active { display: block; animation: fadeUp .35s ease both; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+.step-head { margin-bottom: 32px; }
+.step-head h2 { font-size: 1.75rem; font-weight: 300; color: var(--ink); letter-spacing: -.02em; line-height: 1.15; margin-bottom: 10px; }
+.step-head p { font-size: 14.5px; color: var(--ink2); line-height: 1.6; }
+
+/* ---- Option cards (step 1) ---- */
+.option-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 28px; }
+.opt-card { border: 1.5px solid var(--line); border-radius: var(--r-lg); padding: 20px 18px; cursor: pointer; transition: all .2s; display: flex; flex-direction: column; gap: 10px; }
+.opt-card:hover { border-color: var(--brand); background: var(--tint); }
+.opt-card.selected { border-color: var(--brand); background: var(--tint2); }
+.opt-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--tint2); display: flex; align-items: center; justify-content: center; color: var(--brand); }
+.opt-icon svg { width: 18px; height: 18px; }
+.opt-label { font-size: 14px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+
+/* ---- Loss amount (step 2) ---- */
+.loss-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.loss-opt { border: 1.5px solid var(--line); border-radius: var(--r-lg); padding: 16px 20px; cursor: pointer; display: flex; align-items: center; gap: 14px; transition: all .2s; }
+.loss-opt:hover { border-color: var(--brand); background: var(--tint); }
+.loss-opt.selected { border-color: var(--brand); background: var(--tint2); }
+.loss-radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--line); flex: 0 0 auto; display: flex; align-items: center; justify-content: center; }
+.loss-opt.selected .loss-radio { border-color: var(--brand); background: var(--brand); }
+.loss-opt.selected .loss-radio::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fff; }
+.loss-label { font-size: 14.5px; color: var(--ink); font-weight: 500; }
+.loss-sub { font-size: 12px; color: var(--ink3); margin-top: 2px; }
+.detail-area { width: 100%; border: 1.5px solid var(--line); border-radius: var(--r-lg); padding: 14px 16px; font-family: var(--font); font-size: 14.5px; color: var(--ink); background: #fff; resize: none; margin-bottom: 20px; }
+.detail-area:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(30,63,110,.1); }
+
+/* ---- Contact form (step 3) ---- */
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+.field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.field label { font-size: 12.5px; font-weight: 600; color: var(--ink2); letter-spacing: .02em; }
+.field input, .field select { border: 1.5px solid var(--line); border-radius: var(--r-lg); padding: 13px 15px; font-family: var(--font); font-size: 15px; color: var(--ink); background: #fff; transition: border .2s; }
+.field input:focus, .field select:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(30,63,110,.1); }
+.disclaimer { font-size: 11.5px; color: var(--ink3); line-height: 1.6; margin-bottom: 20px; }
+
+/* ---- Success (step 4) ---- */
+.success-wrap { text-align: center; padding: 20px 0; }
+.success-icon { width: 72px; height: 72px; border-radius: 50%; background: var(--tint2); color: var(--brand); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; }
+.success-icon svg { width: 32px; height: 32px; }
+.success-wrap h2 { font-size: 1.8rem; font-weight: 300; color: var(--ink); letter-spacing: -.02em; margin-bottom: 12px; }
+.success-wrap p { font-size: 15px; color: var(--ink2); line-height: 1.65; max-width: 360px; margin: 0 auto 32px; }
+.next-steps { background: var(--tint); border-radius: var(--r-xl); padding: 24px; text-align: left; margin-bottom: 28px; }
+.next-steps h4 { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--brand); margin-bottom: 16px; }
+.next-step { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+.ns-num { width: 24px; height: 24px; border-radius: 50%; background: var(--brand); color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex: 0 0 auto; margin-top: 1px; }
+.ns-text { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* ---- Buttons ---- */
+.btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font); font-weight: 500; font-size: 13.5px; letter-spacing: .03em; border: 0; cursor: pointer; border-radius: var(--r-pill); padding: 13px 26px; transition: all .2s; white-space: nowrap; }
+.btn svg { width: 15px; height: 15px; }
+.btn-primary { background: var(--brand); color: #fff; width: 100%; justify-content: center; }
+.btn-primary:hover { background: var(--brand-h); transform: translateY(-1px); }
+.btn-back { background: none; border: 0; color: var(--ink3); font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: var(--font); margin-bottom: 24px; padding: 0; }
+.btn-back:hover { color: var(--ink); }
+
+@media (max-width: 860px) {
+  .shell { grid-template-columns: 1fr; }
+  .left { display: none; }
+  .right { padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <!-- Left panel -->
+  <div class="left">
+    <div class="left-inner">
+      <img class="logo" src="./assets/sonn-law-logo-white.png" alt="Sonn Law Group" />
+      <h1>Your recovery<br /><span>starts here.</span></h1>
+      <p>Free, confidential case reviews with one of our securities fraud attorneys. No fees unless we recover for you.</p>
+      <div class="trust-list">
+        <div class="trust-item">
+          <div class="trust-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg></div>
+          <span class="trust-text">Completely confidential — attorney-client privilege from the start</span>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <span class="trust-text">Contingency fees — you pay nothing unless we win</span>
+        </div>
+        <div class="trust-item">
+          <div class="trust-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"/></svg></div>
+          <span class="trust-text">FINRA-certified attorneys representing investors nationwide</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-info">
+      <a href="tel:18446895754">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75z"/></svg>
+        1-844-689-5754
+      </a>
+      <a href="#">
+        <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+        Aventura, Florida · Nationwide
+      </a>
+    </div>
+  </div>
+
+  <!-- Right panel -->
+  <div class="right">
+    <div class="form-wrap">
+      <!-- Progress -->
+      <div class="progress-row">
+        <div class="step-dot active" id="dot-1"></div>
+        <div class="step-dot" id="dot-2"></div>
+        <div class="step-dot" id="dot-3"></div>
+        <div class="step-dot" id="dot-4"></div>
+        <span class="step-label" id="step-label">Step 1 of 3</span>
+      </div>
+
+      <!-- Step 1: What happened -->
+      <div class="step active" id="step-1">
+        <div class="step-head">
+          <h2>What brings you to Sonn Law Group?</h2>
+          <p>Select the option that best describes your situation — we handle all types of investor harm.</p>
+        </div>
+        <div class="option-grid">
+          <div class="opt-card" onclick="selectOpt(this)">
+            <div class="opt-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg></div>
+            <span class="opt-label">Investment Losses with a Broker or Advisor</span>
+          </div>
+          <div class="opt-card" onclick="selectOpt(this)">
+            <div class="opt-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/></svg></div>
+            <span class="opt-label">I Suspect Investment Fraud or a Ponzi Scheme</span>
+          </div>
+          <div class="opt-card" onclick="selectOpt(this)">
+            <div class="opt-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg></div>
+            <span class="opt-label">Class Action or Group of Investors</span>
+          </div>
+          <div class="opt-card" onclick="selectOpt(this)">
+            <div class="opt-icon"><svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg></div>
+            <span class="opt-label">Whistleblower — Reporting Financial Misconduct</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="nextStep()" id="btn-next-1" disabled>
+          Continue
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
+        </button>
+      </div>
+
+      <!-- Step 2: Loss amount -->
+      <div class="step" id="step-2">
+        <button class="btn-back" onclick="prevStep()">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+          Back
+        </button>
+        <div class="step-head">
+          <h2>How much have you lost?</h2>
+          <p>An estimate is fine — we need this to assess whether litigation or arbitration is the right path.</p>
+        </div>
+        <div class="loss-options">
+          <div class="loss-opt" onclick="selectLoss(this)"><div class="loss-radio"></div><div><div class="loss-label">Under $50,000</div></div></div>
+          <div class="loss-opt" onclick="selectLoss(this)"><div class="loss-radio"></div><div><div class="loss-label">$50,000 – $250,000</div></div></div>
+          <div class="loss-opt" onclick="selectLoss(this)"><div class="loss-radio"></div><div><div class="loss-label">$250,000 – $1 million</div><div class="loss-sub">FINRA arbitration is typically most efficient at this range</div></div></div>
+          <div class="loss-opt" onclick="selectLoss(this)"><div class="loss-radio"></div><div><div class="loss-label">Over $1 million</div><div class="loss-sub">Complex litigation and class action may be appropriate</div></div></div>
+          <div class="loss-opt" onclick="selectLoss(this)"><div class="loss-radio"></div><div><div class="loss-label">I'm not sure yet</div></div></div>
+        </div>
+        <textarea class="detail-area" rows="3" placeholder="Briefly describe what happened (optional — your attorney will ask in the consultation)…"></textarea>
+        <button class="btn btn-primary" onclick="nextStep()" id="btn-next-2" disabled>
+          Continue
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5-7.5M21 12H3"/></svg>
+        </button>
+      </div>
+
+      <!-- Step 3: Contact info -->
+      <div class="step" id="step-3">
+        <button class="btn-back" onclick="prevStep()">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="16" height="16"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/></svg>
+          Back
+        </button>
+        <div class="step-head">
+          <h2>How can we reach you?</h2>
+          <p>An attorney will contact you within one business day. All information is protected by attorney-client privilege.</p>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>First name</label><input type="text" placeholder="Jane" /></div>
+          <div class="field"><label>Last name</label><input type="text" placeholder="Investor" /></div>
+        </div>
+        <div class="field"><label>Email address</label><input type="email" placeholder="jane@email.com" /></div>
+        <div class="field"><label>Phone number</label><input type="tel" placeholder="(305) 000-0000" /></div>
+        <div class="field">
+          <label>State</label>
+          <select>
+            <option value="">Select your state</option>
+            <option>Florida</option><option>New York</option><option>California</option><option>Texas</option><option>Other</option>
+          </select>
+        </div>
+        <p class="disclaimer">By submitting this form, you agree to be contacted by Sonn Law Group regarding your potential claim. This does not create an attorney-client relationship. All consultations are confidential and free of charge.</p>
+        <button class="btn btn-primary" onclick="submitForm()">
+          Submit Confidentially
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+        </button>
+      </div>
+
+      <!-- Step 4: Success -->
+      <div class="step" id="step-4">
+        <div class="success-wrap">
+          <div class="success-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h2>Request Received</h2>
+          <p>Thank you. A Sonn Law Group attorney will review your case and reach out within one business day.</p>
+          <div class="next-steps">
+            <h4>What Happens Next</h4>
+            <div class="next-step"><div class="ns-num">1</div><div class="ns-text"><strong>Attorney review</strong> — Jeffrey Sonn or a senior associate will personally review your submission today.</div></div>
+            <div class="next-step"><div class="ns-num">2</div><div class="ns-text"><strong>Free consultation call</strong> — We'll schedule a confidential call to discuss your situation and evaluate your claim.</div></div>
+            <div class="next-step"><div class="ns-num">3</div><div class="ns-text"><strong>Case strategy</strong> — If you have a viable claim, we'll explain your options: FINRA arbitration, litigation, or class action.</div></div>
+          </div>
+          <p style="font-size:13.5px;color:var(--ink3)">Need to speak to someone now? Call <a href="tel:18446895754" style="color:var(--brand);font-weight:600">1-844-689-5754</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let currentStep = 1;
+const totalSteps = 3;
+
+function updateProgress() {
+  for (let i = 1; i <= 4; i++) {
+    const dot = document.getElementById('dot-' + i);
+    dot.className = 'step-dot';
+    if (i < currentStep) dot.classList.add('done');
+    else if (i === currentStep) dot.classList.add('active');
+  }
+  const label = document.getElementById('step-label');
+  if (currentStep <= totalSteps) label.textContent = `Step ${currentStep} of ${totalSteps}`;
+  else label.textContent = 'Complete';
+}
+
+function goToStep(n) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById('step-' + n).classList.add('active');
+  currentStep = n;
+  updateProgress();
+}
+
+function nextStep() { goToStep(currentStep + 1); }
+function prevStep() { goToStep(currentStep - 1); }
+function submitForm() { goToStep(4); }
+
+function selectOpt(el) {
+  document.querySelectorAll('.opt-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('btn-next-1').disabled = false;
+}
+
+function selectLoss(el) {
+  document.querySelectorAll('.loss-opt').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('btn-next-2').disabled = false;
+}
+</script>
+</body>
+</html>

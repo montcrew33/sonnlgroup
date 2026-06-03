@@ -1,7 +1,7 @@
 /* Sonn Law Group Website Kit — app composition */
 function App() {
   const [modal, setModal] = React.useState(false);
-  const open = () => setModal(true);
+  const open = () => { window.location.href = 'contact.html'; };
   useReveal();
   React.useEffect(() => { refreshIcons(); });
   return (

@@ -15,13 +15,52 @@ button{font-family:inherit}
 /* ---- Buttons — slim pill profile, tracked text ---- */
 .btn{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:13px;letter-spacing:0.04em;border:0;cursor:pointer;border-radius:var(--radius-pill);padding:10px 22px;transition:all var(--dur-base) var(--ease-out);white-space:nowrap;text-decoration:none}
 .btn svg{width:14px;height:14px;flex:0 0 auto}
-.btn-primary{background:var(--blue-700);color:#fff}
-.btn-primary:hover{background:var(--blue-600);transform:translateY(-1px)}
-.btn-primary:active{transform:scale(.98)}
+/* Primary — deep navy glass, elevated */
+.btn-primary{
+  background: linear-gradient(168deg, #2c5599 0%, #1e3f6e 52%, #162e52 100%);
+  color: #fff;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.18) inset,
+    0 -1px 0 rgba(0,0,0,.14) inset,
+    0 5px 18px rgba(21,42,71,.38),
+    0 1px 4px rgba(21,42,71,.28);
+  border: 1px solid rgba(255,255,255,.10);
+}
+.btn-primary:hover{
+  background: linear-gradient(168deg, #3462b0 0%, #24548f 52%, #1a3760 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.22) inset,
+    0 -1px 0 rgba(0,0,0,.16) inset,
+    0 8px 24px rgba(21,42,71,.42),
+    0 2px 6px rgba(21,42,71,.3);
+  transform: translateY(-1px);
+}
+.btn-primary:active{transform:translateY(0) scale(.98);box-shadow:0 2px 8px rgba(21,42,71,.3)}
+
+/* Ghost — light surface, ring */
 .btn-ghost{background:#fff;color:var(--ink-900);box-shadow:var(--ring-inset)}
 .btn-ghost:hover{background:var(--blue-50)}
-.btn-ondark{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(6px)}
-.btn-ondark:hover{background:rgba(255,255,255,.2)}
+
+/* On-dark — frosted glass secondary */
+.btn-ondark{
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.14) inset,
+    0 4px 14px rgba(0,0,0,.14);
+}
+.btn-ondark:hover{
+  background: rgba(255,255,255,.14);
+  border-color: rgba(255,255,255,.34);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.2) inset,
+    0 6px 18px rgba(0,0,0,.18);
+  transform: translateY(-1px);
+}
+.btn-ondark:active{transform:translateY(0) scale(.98)}
 .iconbtn{width:46px;height:46px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;background:#fff;box-shadow:var(--ring-inset);color:var(--ink-700);transition:all var(--dur-base) var(--ease-out)}
 .iconbtn:hover{background:var(--blue-50)}
 .iconbtn.fill{background:var(--blue-700);color:#fff;box-shadow:none}
@@ -51,23 +90,18 @@ button{font-family:inherit}
 .nav-cta{pointer-events:auto;display:flex;justify-content:flex-end}
 @media(max-width:880px){.nav-pill{display:none}}
 
-/* ---- HERO — refined ---- */
-.hero{position:relative;min-height:640px;border-radius:0 0 30px 30px;overflow:clip;display:flex;align-items:flex-end}
+/* ---- HERO — calm, left-anchored ---- */
+.hero{position:relative;min-height:680px;border-radius:0 0 30px 30px;overflow:clip;display:flex;align-items:center}
 .hero-bg{position:absolute;inset:0;width:100%;height:100%}
-.hero-bg image-slot{width:100%;height:100%}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(108deg,rgba(12,26,43,.75) 0%,rgba(21,42,71,.42) 46%,rgba(21,42,71,.10) 100%)}
-.hero-blue-sheet{position:absolute;inset:0;background:rgba(14,45,90,.38);mix-blend-mode:multiply}
-.hero-grad-bottom{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,26,43,.62),transparent 45%)}
-.hero-inner{position:relative;width:100%;padding:0 0 56px;display:flex;justify-content:space-between;align-items:flex-end;gap:40px}
-.hero-copy{max-width:620px}
-.hero h1{color:#fff;font-weight:300;font-size:clamp(1.9rem,1rem + 2.6vw,2.75rem)}
-.hero-sub{color:rgba(255,255,255,.78);font-size:15.5px;line-height:1.65;margin:20px 0 28px;max-width:460px}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-.scroll-hint{position:absolute;right:40px;bottom:28px;color:rgba(255,255,255,.65);font-size:12px;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
-.stat-glass{background:rgba(12,26,43,.40);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.16);border-radius:var(--radius-lg);padding:22px 28px;box-shadow:var(--shadow-glass);min-width:220px}
-.stat-glass .num{font-family:var(--font-display);font-weight:300;font-size:40px;color:#fff;letter-spacing:-.03em;line-height:1}
-.stat-glass .cap{font-size:13px;color:rgba(255,255,255,.72);margin-top:8px;letter-spacing:.01em}
-@media(max-width:880px){.hero-inner{flex-direction:column;align-items:flex-start}.scroll-hint{display:none}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(108deg,rgba(12,26,43,.82) 0%,rgba(21,42,71,.55) 55%,rgba(21,42,71,.18) 100%)}
+.hero-blue-sheet{position:absolute;inset:0;background:rgba(14,45,90,.32);mix-blend-mode:multiply}
+.hero-grad-bottom{position:absolute;inset:0;background:linear-gradient(to top,rgba(12,26,43,.55),transparent 50%)}
+.hero-inner{position:relative;width:100%;padding:130px 0 100px;display:flex;align-items:center}
+.hero-copy{max-width:480px}
+.hero-h1{font-family:var(--font-display);font-size:clamp(1.9rem,1rem + 2.4vw,2.85rem);font-weight:300;line-height:1.14;letter-spacing:-.03em;color:#fff;margin:0 0 26px}
+.hero-sub{color:rgba(255,255,255,.65);font-size:14.5px;line-height:1.65;margin:0 0 38px;max-width:390px}
+.hero-cta{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:880px){.hero-inner{padding:110px 0 64px}}
 
 /* ---- Section rhythm ---- */
 .section{padding:96px 0}
@@ -110,7 +144,8 @@ button{font-family:inherit}
 .logos{display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;opacity:.5;filter:grayscale(1)}
 .logos span{font-family:var(--font-display);font-weight:700;font-size:18px;color:var(--ink-500);letter-spacing:.02em}
 
-/* ---- Cases carousel ---- */
+.section-trust-note{font-size:12px;color:var(--ink3);letter-spacing:.04em;text-align:center;margin-bottom:40px;display:flex;align-items:center;justify-content:center;gap:18px}
+.section-trust-note::before,.section-trust-note::after{content:'';flex:1;height:1px;background:var(--line)}
 .cases-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px}
 .cases-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;scrollbar-width:none}
 .cases-track::-webkit-scrollbar{display:none}
@@ -212,3 +247,88 @@ button{font-family:inherit}
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
   .reveal.in{opacity:1;transform:none}
 }
+
+/* ---- Practice Areas grid ---- */
+.pa-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pa-card{background:var(--blue-50);border-radius:var(--radius-xl);padding:32px 28px;display:flex;flex-direction:column;box-shadow:var(--ring-inset);transition:box-shadow var(--dur-base),transform var(--dur-base)}
+.pa-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.pa-icon-wrap{width:44px;height:44px;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;color:var(--blue-700);box-shadow:var(--ring-inset);margin-bottom:18px}
+.pa-icon-wrap svg{width:20px;height:20px}
+.pa-title{font-family:var(--font-display);font-weight:400;font-size:17px;color:var(--ink-900);letter-spacing:-.01em;margin-bottom:12px;line-height:1.25}
+.pa-desc{font-size:13.5px;color:var(--ink-500);line-height:1.65;flex:1;margin-bottom:20px}
+.pa-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.pa-tag{font-size:11px;font-weight:500;color:var(--blue-700);background:rgba(30,63,110,.08);border-radius:var(--radius-pill);padding:4px 11px;letter-spacing:.01em}
+.pa-link{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--blue-700);margin-top:auto;transition:gap var(--dur-fast)}
+.pa-link:hover{gap:10px}
+@media(max-width:880px){.pa-grid{grid-template-columns:1fr}}
+
+/* ---- Case Experience grid ---- */
+.cases-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px}
+.ce-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ce-card{background:var(--blue-50);border-radius:var(--radius-xl);padding:36px 30px;display:flex;flex-direction:column;box-shadow:var(--ring-inset);transition:box-shadow var(--dur-base),transform var(--dur-base)}
+.ce-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.ce-dark{background:linear-gradient(145deg,#0c1a2b,#1e3f6e);box-shadow:none}
+.ce-dark:hover{box-shadow:0 12px 40px rgba(21,42,71,.35)}
+.ce-icon{width:42px;height:42px;border-radius:11px;background:rgba(30,63,110,.1);display:flex;align-items:center;justify-content:center;color:var(--blue-700);margin-bottom:20px;flex:0 0 auto}
+.ce-dark .ce-icon{background:rgba(255,255,255,.1);color:var(--accent)}
+.ce-icon svg{width:19px;height:19px}
+.ce-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--blue-700);margin-bottom:14px}
+.ce-dark .ce-eyebrow{color:var(--accent)}
+.ce-title{font-family:var(--font-display);font-weight:400;font-size:16px;color:var(--ink-900);line-height:1.3;letter-spacing:-.01em;margin-bottom:14px}
+.ce-dark .ce-title{color:#fff}
+.ce-body{font-size:13.5px;color:var(--ink-500);line-height:1.65;flex:1;margin-bottom:28px}
+.ce-dark .ce-body{color:rgba(255,255,255,.65)}
+@media(max-width:880px){.ce-grid{grid-template-columns:1fr}}
+
+/* ---- Practice Areas image grid ---- */
+.pa-img-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.pa-img-stack{display:flex;flex-direction:column;gap:16px}
+.pa-img-card{position:relative;border-radius:var(--radius-xl);overflow:hidden;background-size:cover;background-position:center;cursor:pointer;text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end;transition:transform var(--dur-base)}
+.pa-img-card:hover{transform:scale(1.01)}
+.pa-img-big{min-height:460px}
+.pa-img-stack .pa-img-card{flex:1;min-height:200px}
+.pa-img-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,40,.18) 0%,rgba(10,22,40,.72) 55%,rgba(10,22,40,.90) 100%)}
+.pa-img-body{position:relative;z-index:1;padding:28px 28px 26px}
+.pa-img-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:10px}
+.pa-img-title{font-family:var(--font-display);font-weight:400;font-size:16.5px;color:#fff;line-height:1.3;letter-spacing:-.01em;margin-bottom:10px}
+.pa-img-big .pa-img-title{font-size:20px}
+.pa-img-desc{font-size:13px;color:rgba(255,255,255,.65);line-height:1.6;margin-bottom:18px}
+.pa-img-link{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.85);letter-spacing:.02em;transition:gap var(--dur-fast)}
+.pa-img-card:hover .pa-img-link{gap:11px}
+@media(max-width:880px){.pa-img-grid{grid-template-columns:1fr}.pa-img-big{min-height:320px}}
+
+/* ---- Nationwide Investor Advocacy grid ---- */
+.nia-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:20px;align-items:stretch}
+.nia-photo{position:relative;border-radius:var(--radius-xl);overflow:hidden;min-height:460px}
+.nia-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0}
+.nia-photo-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,22,40,.10) 30%,rgba(10,22,40,.80) 100%)}
+.nia-float{position:absolute;bottom:0;left:0;right:0;padding:24px 26px;z-index:1}
+.nia-float-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px}
+.nia-float-text{font-size:14px;color:rgba(255,255,255,.88);line-height:1.55;font-weight:400}
+.nia-stack{display:flex;flex-direction:column;gap:16px}
+.nia-tile{border-radius:var(--radius-xl);padding:30px 28px;flex:1;display:flex;flex-direction:column}
+.nia-tile-light{background:var(--blue-50);box-shadow:var(--ring-inset)}
+.nia-tile-dark{background:linear-gradient(145deg,#0c1a2b,#1a3a64)}
+.nia-tile-head{font-family:var(--font-display);font-weight:400;font-size:18px;color:var(--ink-900);letter-spacing:-.01em;margin-bottom:14px}
+.nia-tile-dark .nia-tile-head{color:#fff}
+.nia-tile-body{font-size:13.5px;color:var(--ink-500);line-height:1.65}
+.nia-tile-sub{font-size:13px;color:rgba(255,255,255,.6);line-height:1.6;margin-bottom:20px}
+.nia-bars{display:flex;align-items:flex-end;gap:10px;height:80px;margin-top:auto;padding-top:12px}
+.nia-bar-col{display:flex;flex-direction:column;align-items:center;flex:1;height:100%;justify-content:flex-end}
+.nia-bar{width:100%;border-radius:5px 5px 0 0;background:rgba(255,255,255,.18)}
+.nia-bar-hi{background:var(--accent)}
+.nia-bar-yr{font-size:10px;color:rgba(255,255,255,.45);margin-top:6px;letter-spacing:.02em}
+@media(max-width:880px){.nia-grid{grid-template-columns:1fr}.nia-photo{min-height:300px}}
+
+/* ---- Practice area image card — hero title style ---- */
+.pa-img-hero{font-family:var(--font-display);font-weight:300;font-size:1.6rem;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:18px}
+
+/* ---- NIA trust items (replaces bar chart) ---- */
+.nia-trust-items{display:flex;flex-direction:column;gap:0;flex:1;justify-content:center;margin-top:16px}
+.nia-trust-item{padding:16px 0}
+.nia-trust-divider{height:1px;background:rgba(255,255,255,.1)}
+.nia-trust-num{font-family:var(--font-display);font-weight:300;font-size:3rem;color:#fff;letter-spacing:-.04em;line-height:1}
+.nia-trust-cap{font-size:12.5px;color:rgba(255,255,255,.55);margin-top:6px;line-height:1.4;letter-spacing:.01em}
+.nia-google-row{display:flex;align-items:center;gap:10px}
+.nia-google-score{font-family:var(--font-display);font-weight:300;font-size:2.4rem;color:#fff;letter-spacing:-.03em;line-height:1}
+.nia-stars{display:flex;gap:2px;align-items:center}

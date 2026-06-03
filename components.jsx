@@ -70,19 +70,18 @@ function Hero({ onContact }) {
       <div className="hero-grad-bottom"></div>
       <div className="container hero-inner">
         <div className="hero-copy">
-          <h1 className="h-display">Recovering What's Yours<br /><span className="accent">When Trust Is Broken</span></h1>
-          <p className="hero-sub">We pursue the banks, brokerages, and advisors who put their interests ahead of yours — and we don't get paid unless you do.</p>
+          <h1 className="hero-h1">
+            Investor Rights.<br />
+            Securities Litigation.<br />
+            <span className="accent">Trusted Guidance.</span>
+          </h1>
+          <p className="hero-sub">Nationwide representation for investors facing fraud, broker misconduct, and investment losses.</p>
           <div className="hero-cta">
             <Button onClick={onContact}>Request a Free Case Review</Button>
-            <Button variant="ondark" icon={null}>Our Practice Areas</Button>
+            <Button variant="ondark" icon={null}>Explore Practice Areas</Button>
           </div>
         </div>
-        <div className="stat-glass">
-          <div className="num">$2.3B+</div>
-          <div className="cap">recovered for harmed investors</div>
-        </div>
       </div>
-      <div className="scroll-hint">Scroll to Explore <Icon name="arrow-down" /></div>
     </header>
   );
 }
