@@ -265,6 +265,7 @@ button{font-family:inherit}
   .hero{min-height:480px}
   .hero-inner{padding:84px 0 56px}
   .hero-copy{max-width:100%}
+  .hero-inner{padding-left:32px;padding-right:32px}
   .hero-cta{flex-direction:column;gap:8px}
   .hero-cta .btn{width:100%;justify-content:center}
   .nav-brand img{height:38px}
