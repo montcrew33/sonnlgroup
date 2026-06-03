@@ -248,6 +248,47 @@ button{font-family:inherit}
   .reveal.in{opacity:1;transform:none}
 }
 
+/* ---- Tablet / large phone (≤880px) rhythm fixes ---- */
+@media(max-width:880px){
+  .section{padding:72px 0}
+  .section.tight{padding:52px 0}
+  .hero{min-height:560px}
+  .hero-inner{padding:100px 0 72px}
+  .cta-band{padding:48px 28px}
+  .footer{padding:52px 0 32px}
+}
+
+/* ---- Small phone (≤600px) ---- */
+@media(max-width:600px){
+  .section{padding:52px 0}
+  .section.tight{padding:40px 0}
+  .hero{min-height:480px}
+  .hero-inner{padding:84px 0 56px}
+  .hero-copy{max-width:100%}
+  .hero-cta{flex-direction:column;gap:8px}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .nav-brand img{height:38px}
+  .cta-band{padding:36px 20px}
+  .cta-band h2{font-size:clamp(1.4rem,.9rem + 3vw,2rem)}
+  .trusted{padding:28px 20px}
+  .section-trust-note{flex-direction:column;gap:6px;text-align:center}
+  .section-trust-note::before,.section-trust-note::after{display:none}
+  .logos{gap:14px;justify-content:center}
+  .logos span{font-size:14px}
+  .cases-head{flex-direction:column;align-items:flex-start;gap:12px}
+  .team-head{flex-direction:column;align-items:flex-start;gap:12px}
+  .ins-head{flex-direction:column;align-items:flex-start;gap:12px}
+  .footer-top{grid-template-columns:1fr}
+  .footer{padding:44px 0 24px}
+  .footer-bot{flex-direction:column;text-align:center;gap:8px}
+  .nia-trust-items{flex-direction:column !important}
+  .nia-trust-item{border-right:none !important;padding-right:0 !important;padding-left:0 !important;border-bottom:1px solid rgba(255,255,255,.1)}
+  .nia-trust-item:last-child{border-bottom:0}
+  .pa-img-big{min-height:260px}
+  .pa-img-stack .pa-img-card{min-height:180px}
+  .modal{padding:28px 20px}
+}
+
 /* ---- Practice Areas grid ---- */
 .pa-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .pa-card{background:var(--blue-50);border-radius:var(--radius-xl);padding:32px 28px;display:flex;flex-direction:column;box-shadow:var(--ring-inset);transition:box-shadow var(--dur-base),transform var(--dur-base)}
